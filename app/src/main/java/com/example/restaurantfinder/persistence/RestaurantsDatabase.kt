@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [Restaurant::class], version = 1)
+@Database(entities = [Restaurant::class], version = 1, exportSchema = false)
 abstract class RestaurantsDatabase : RoomDatabase() {
 
     abstract fun restaurantDao(): RestaurantDao
@@ -25,7 +25,6 @@ abstract class RestaurantsDatabase : RoomDatabase() {
             Room.databaseBuilder(
                 context.applicationContext,
                 RestaurantsDatabase::class.java, "Restaurant.db"
-            )
-                .build()
+            ).build()
     }
 }

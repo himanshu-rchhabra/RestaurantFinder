@@ -43,6 +43,7 @@ class RestaurantListViewModel(
                     {
                         liveData.value =
                             liveData.value?.onDataLoaded(it.restaurants.map { it.restaurant })
+                        saveData(it)
                     },
                     { error ->
                         run {
@@ -51,6 +52,12 @@ class RestaurantListViewModel(
                         }
                     })
         )
+    }
+
+    private fun saveData(it: ZomatoApi.RestaurantListResponse) {
+        database.saveRestaurants(it.restaurants.map { it.restaurant })
+            .subscribeOn(Schedulers.io())
+            .subscribe()
     }
 
     open class Factory(
