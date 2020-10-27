@@ -25,4 +25,11 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
+    <include
+        android:id="@+id/restaurant_single_item"
+        layout="@layout/restaurant_item_row"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
