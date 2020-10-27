@@ -3,6 +3,7 @@ package com.example.restaurantfinder
 import android.content.Context
 import com.example.restaurantfinder.persistence.RestaurantDao
 import com.example.restaurantfinder.persistence.RestaurantsDatabase
+import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 
 object Injection {
 
@@ -11,8 +12,8 @@ object Injection {
         return database.restaurantDao()
     }
 
-//    fun provideViewModelFactory(context: Context): ViewModelFactory {
-//        val dataSource = provideRestaurantDataSource(context)
-//        return ViewModelFactory(dataSource)
-//    }
+    fun provideRestaurantListViewModelFactory(context: Context): RestaurantListViewModel.Factory {
+        val dataSource = provideRestaurantDataSource(context)
+        return RestaurantListViewModel.Factory(dataSource)
+    }
 }
