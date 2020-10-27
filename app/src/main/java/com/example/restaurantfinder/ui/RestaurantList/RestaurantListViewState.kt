@@ -2,6 +2,7 @@ package com.example.restaurantfinder.ui.RestaurantList
 
 import com.example.restaurantfinder.persistence.Restaurant
 
+// TODO Milestone1 (06) Define restaurant list view states
 data class RestaurantListViewState(
     var isLoading: Boolean = true,
     var error: Throwable? = null,

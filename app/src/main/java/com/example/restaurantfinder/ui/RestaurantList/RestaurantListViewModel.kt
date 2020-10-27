@@ -12,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+// TODO Milestone1 (07) Define RestaurantListViewModel to fetch and manage data
 class RestaurantListViewModel(
     private val database: RestaurantDao,
     private val api: ZomatoApi

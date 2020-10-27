@@ -16,7 +16,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-
+// TODO Milestone1 (05) Define API contract
 interface ZomatoApi {
 
     @GET("api/v2.1/search")

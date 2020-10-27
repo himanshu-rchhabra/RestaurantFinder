@@ -6,6 +6,8 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
+// TODO Milestone1 (04) Define data model
+
 @Entity(tableName = "restaurant")
 data class Restaurant(
     @PrimaryKey

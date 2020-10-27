@@ -14,6 +14,7 @@ object Injection {
         return database.restaurantDao()
     }
 
+    // TODO Milestone1 (09) Define injection for RestaurantListViewModel
     fun provideRestaurantListViewModelFactory(context: Context): RestaurantListViewModel.Factory {
         val database = provideRestaurantDataSource(context)
         val apiSource = ZomatoApi.create()

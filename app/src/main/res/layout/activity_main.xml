@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantListActivity">
 
+    <!-- TODO Milestone1 (11) Design list states layout -->
+
     <include
         android:id="@+id/error_loading"
         layout="@layout/error_loading_try_again"
@@ -21,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/loading_progress_text"
-        android:textSize="@dimen/text_large"
+        android:textSize="15sp"
         android:visibility="gone"
         tools:visibility="visible" />
 

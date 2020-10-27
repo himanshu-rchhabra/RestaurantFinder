@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.error_loading_try_again.*
 class RestaurantListActivity : AppCompatActivity(),
     RestaurantListAdapter.RestaurantListClickListener {
 
+    // TODO Milestone1 (10) User RestaurantListViewModel to fetch data
     private lateinit var viewModelFactory: RestaurantListViewModel.Factory
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewAdapter: RestaurantListAdapter
@@ -43,6 +44,7 @@ class RestaurantListActivity : AppCompatActivity(),
         viewModel.loadData()
     }
 
+    // TODO Milestone1 (12) Render state from api response
     private fun renderState(viewState: RestaurantListViewState) {
         when {
             viewState.isLoading -> renderLoadingState()
