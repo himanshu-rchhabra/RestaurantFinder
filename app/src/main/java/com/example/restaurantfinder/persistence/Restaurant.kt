@@ -2,6 +2,10 @@ package com.example.restaurantfinder.persistence
 
 import com.google.gson.annotations.SerializedName
 
+// TODO Milestone3 (02) Setup model for database
+// TODO Milestone3 (03) Define Restaurant Dao for database interactions
+// TODO Milestone3 (04) Setup database
+
 data class Restaurant(
     @SerializedName("id")
     val id: Int,

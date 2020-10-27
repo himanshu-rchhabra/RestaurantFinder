@@ -10,6 +10,7 @@ import com.example.restaurantfinder.api.ZomatoApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+// TODO Milestone3 (06) add database to viewmodel
 class RestaurantListViewModel(
     private val api: ZomatoApi
 ) : ViewModel() {
@@ -46,6 +47,8 @@ class RestaurantListViewModel(
                 })
 
     }
+
+    // TODO Milestone3 (07) save data from response to database
 
     open class Factory(
         private val api: ZomatoApi
