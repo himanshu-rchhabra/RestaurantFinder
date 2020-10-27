@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RestaurantFinder</string>
+
+    <string name="loading_progress_text" comment="Generic progress message to signify the system loading data from the network">Loading…</string>
+    <string name="try_again">Try again</string>
+    <string name="unknown_exception" comment="Short error message for when an unknown error occurs.">Sorry, something went wrong.</string>
 </resources>

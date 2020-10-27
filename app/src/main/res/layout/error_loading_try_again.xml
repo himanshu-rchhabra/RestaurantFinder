@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/emptyImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/empty_card_margin_top"
+        android:importantForAccessibility="no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--    app:srcCompat="@drawable/ic_emptystate_plane"-->
+
+    <TextView
+        android:id="@+id/cannot_load_message"
+        style="@style/emptyStateText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/empty_card_outer_margin"
+        android:layout_marginTop="@dimen/space_double"
+        android:layout_marginEnd="@dimen/empty_card_outer_margin"
+        android:text="@string/unknown_exception"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emptyImage" />
+
+    <TextView
+        android:id="@+id/try_again"
+        style="@style/text_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/universal_search_error_try_again_top_margin"
+        android:padding="@dimen/spacing_small_to_medium"
+        android:text="@string/try_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cannot_load_message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
