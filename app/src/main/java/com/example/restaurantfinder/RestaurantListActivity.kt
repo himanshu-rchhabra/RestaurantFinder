@@ -12,6 +12,7 @@ class RestaurantListActivity : AppCompatActivity() {
     }
 
     // TODO Milestone1 (12) Render state from api response
+    // TODO Milestone1 (13) Render single restaurant data
 }
 
 // TODO Milestone1 (06) Define restaurant list view states
