@@ -12,7 +12,10 @@ import com.example.restaurantfinder.R
 import com.example.restaurantfinder.persistence.Restaurant
 import org.w3c.dom.Text
 
-class RestaurantListAdapter(private var restaurantList: List<Restaurant> = emptyList()) :
+class RestaurantListAdapter(
+    private var restaurantList: List<Restaurant> = emptyList(),
+    val restaurantListClickListener: RestaurantListClickListener
+) :
     RecyclerView.Adapter<RestaurantListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -35,21 +38,26 @@ class RestaurantListAdapter(private var restaurantList: List<Restaurant> = empty
     }
 
     override fun onBindViewHolder(holder: RestaurantListAdapter.ViewHolder, position: Int) {
-        holder.bindView(restaurantList[position])
+        holder.bindView(restaurantList[position], restaurantListClickListener)
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    open class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val name: TextView
         private val cuisine: TextView
         private val image: ImageView
+        private val parentLayout: View
 
-        fun bindView(restaurant: Restaurant) {
+        fun bindView(
+            restaurant: Restaurant,
+            listClickListener: RestaurantListClickListener
+        ) {
             name.text = restaurant.name
             cuisine.text = restaurant.cuisines
             Glide.with(image.context)
                 .load(restaurant.featuredImage)
                 .optionalCenterCrop()
                 .into(image)
+            parentLayout.setOnClickListener { listClickListener.onRestaurantClicked(restaurantId = restaurant.id) }
         }
 
         init {
@@ -57,11 +65,15 @@ class RestaurantListAdapter(private var restaurantList: List<Restaurant> = empty
             name = v.findViewById(R.id.restaurant_name)
             cuisine = v.findViewById(R.id.restaurant_cuisine)
             image = v.findViewById(R.id.restaurant_cover)
-
+            parentLayout = v.findViewById(R.id.parent_layout)
         }
     }
 
     companion object {
         private val TAG = RestaurantListAdapter::class.java.simpleName
+    }
+
+    interface RestaurantListClickListener {
+        fun onRestaurantClicked(restaurantId: Int)
     }
 }

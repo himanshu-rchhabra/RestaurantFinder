@@ -4,6 +4,7 @@ import android.content.Context
 import com.example.restaurantfinder.api.ZomatoApi
 import com.example.restaurantfinder.persistence.RestaurantDao
 import com.example.restaurantfinder.persistence.RestaurantsDatabase
+import com.example.restaurantfinder.ui.RestaurantDetails.RestaurantDetailViewModel
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 
 object Injection {
@@ -19,6 +20,13 @@ object Injection {
         return RestaurantListViewModel.Factory(
             database = database,
             api = apiSource
+        )
+    }
+
+    fun provideRestaurantDetailViewModelFactory(context: Context): RestaurantDetailViewModel.Factory {
+        val database = provideRestaurantDataSource(context)
+        return RestaurantDetailViewModel.Factory(
+            database = database
         )
     }
 }

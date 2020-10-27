@@ -7,13 +7,15 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.restaurantfinder.ui.RestaurantDetails.RestaurantDetailActivity
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListAdapter
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewState
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.error_loading_try_again.*
 
-class RestaurantListActivity : AppCompatActivity() {
+class RestaurantListActivity : AppCompatActivity(),
+    RestaurantListAdapter.RestaurantListClickListener {
 
     private lateinit var viewModelFactory: RestaurantListViewModel.Factory
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -28,7 +30,7 @@ class RestaurantListActivity : AppCompatActivity() {
         try_again.setOnClickListener { viewModel.loadData() }
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = RestaurantListAdapter()
+        viewAdapter = RestaurantListAdapter(restaurantListClickListener = this)
         restaurants_recycler_view.apply {
             layoutManager = viewManager
             adapter = viewAdapter
@@ -67,5 +69,9 @@ class RestaurantListActivity : AppCompatActivity() {
         restaurants_recycler_view.visibility = View.VISIBLE
 
         viewAdapter.setData(viewState.restaurants!!)
+    }
+
+    override fun onRestaurantClicked(restaurantId: Int) {
+        startActivity(RestaurantDetailActivity.newIntent(this, restaurantId))
     }
 }
