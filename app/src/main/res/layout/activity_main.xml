@@ -25,12 +25,10 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
-    <include
-        android:id="@+id/restaurant_single_item"
-        layout="@layout/restaurant_item_row"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restaurants_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"/>
-
-    <!-- TODO Milestone2 (05) Add recycler view -->
-
+        tools:visibility="visible" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

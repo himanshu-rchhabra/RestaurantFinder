@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.restaurantfinder.ui.RestaurantList.RestaurantListAdapter
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewState
 import kotlinx.android.synthetic.main.activity_main.*
@@ -14,11 +17,19 @@ class RestaurantListActivity : AppCompatActivity() {
     private lateinit var viewModelFactory: RestaurantListViewModel.Factory
     private val viewModel: RestaurantListViewModel by viewModels { viewModelFactory }
 
-    // TODO Milestone2 (06) Setup recycler view
+    private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var viewAdapter: RestaurantListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = RestaurantListAdapter()
+        restaurants_recycler_view.apply {
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
 
         viewModelFactory = Injection.provideRestaurantListViewModelFactory(this)
         viewModel.getLiveData().observe(this, Observer {
@@ -38,31 +49,20 @@ class RestaurantListActivity : AppCompatActivity() {
     private fun renderLoadingState() {
         loading_text.visibility = View.VISIBLE
         error_loading.visibility = View.GONE
-        restaurant_single_item.visibility = View.GONE
+        restaurants_recycler_view.visibility = View.GONE
     }
 
     private fun renderErrorState() {
         loading_text.visibility = View.GONE
         error_loading.visibility = View.VISIBLE
-        restaurant_single_item.visibility = View.GONE
+        restaurants_recycler_view.visibility = View.GONE
     }
 
     private fun renderData(viewState: RestaurantListViewState) {
         loading_text.visibility = View.GONE
         error_loading.visibility = View.GONE
-        restaurant_single_item.visibility = View.VISIBLE
+        restaurants_recycler_view.visibility = View.VISIBLE
 
-        // TODO Milestone2 (02) Load image using glide
-        viewState.restaurants?.let {
-            if (it.isNotEmpty()) {
-                restaurant_name.text = it.first().name
-                restaurant_cuisine.text = it.first().cuisines
-            }
-        }
-
-        // TODO Milestone2 (07) Update recycler view data
+        viewAdapter.setData(viewState.restaurants!!)
     }
-
-    // TODO Milestone2 (03) Add RestaurantListAdapter
-    // TODO Milestone2 (04) Add RestaurantListViewModelHolder
 }
