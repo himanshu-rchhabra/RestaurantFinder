@@ -11,7 +11,7 @@ class RestaurantListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    // TODO Milestone1 (11) Render state from api response
+    // TODO Milestone1 (12) Render state from api response
 }
 
 // TODO Milestone1 (06) Define restaurant list view states
