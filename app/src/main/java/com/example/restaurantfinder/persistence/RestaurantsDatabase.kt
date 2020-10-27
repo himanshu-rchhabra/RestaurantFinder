@@ -6,6 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
+// TODO Milestone3 (04) Setup database
+
 @Database(entities = [Restaurant::class], version = 1, exportSchema = false)
 abstract class RestaurantsDatabase : RoomDatabase() {
 

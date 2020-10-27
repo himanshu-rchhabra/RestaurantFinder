@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName
 
 // TODO Milestone1 (04) Define data model
 
+// TODO Milestone3 (02) Setup model for database
 @Entity(tableName = "restaurant")
 data class Restaurant(
     @PrimaryKey

@@ -7,6 +7,7 @@ import androidx.room.Query
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
+// TODO Milestone3 (03) Define Restaurant Dao for database interactions
 @Dao
 interface RestaurantDao {
 

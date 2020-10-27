@@ -13,6 +13,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 // TODO Milestone1 (07) Define RestaurantListViewModel to fetch and manage data
+
+// TODO Milestone3 (06) add database to viewmodel
+
 class RestaurantListViewModel(
     private val database: RestaurantDao,
     private val api: ZomatoApi
@@ -54,6 +57,8 @@ class RestaurantListViewModel(
                     })
         )
     }
+
+    // TODO Milestone3 (07) save data from response to database
 
     private fun saveData(it: ZomatoApi.RestaurantListResponse) {
         database.saveRestaurants(it.restaurants.map { it.restaurant })

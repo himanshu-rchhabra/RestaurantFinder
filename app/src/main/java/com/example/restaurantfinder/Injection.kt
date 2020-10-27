@@ -9,6 +9,7 @@ import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 
 object Injection {
 
+    // TODO Milestone3 (05) add injection for database
     private fun provideRestaurantDataSource(context: Context): RestaurantDao {
         val database = RestaurantsDatabase.getInstance(context)
         return database.restaurantDao()
