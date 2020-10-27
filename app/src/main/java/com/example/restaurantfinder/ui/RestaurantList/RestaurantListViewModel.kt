@@ -1,12 +1,16 @@
 package com.example.restaurantfinder.ui.RestaurantList
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.restaurantfinder.BuildConfig
 import com.example.restaurantfinder.api.ZomatoApi
 import com.example.restaurantfinder.persistence.RestaurantDao
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class RestaurantListViewModel(
     private val database: RestaurantDao,
@@ -19,7 +23,7 @@ class RestaurantListViewModel(
     private val disposable = CompositeDisposable()
 
     fun loadData() {
-        // Dont reload data, if it is loading, or already loaded without errors
+        // Don't reload data, if it is loading, or already loaded without errors
         liveData.value?.let {
             if (it.isLoading
                 || (it.error == null && !it.restaurants.isNullOrEmpty())
@@ -28,6 +32,27 @@ class RestaurantListViewModel(
             }
         }
 
+        disposable.add(
+            api.getRestaurants(
+                key = BuildConfig.API_KEY,
+                lat = "12.9217875",
+                lon = "77.6666987",
+                radius = "500"
+            ).subscribeOn(Schedulers.io())
+                .doOnSubscribe { liveData.postValue(liveData.value?.onLoading()) }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    {
+                        liveData.value =
+                            liveData.value?.onDataLoaded(it.restaurants.map { it.restaurant })
+                    },
+                    { error ->
+                        run {
+                            liveData.value = liveData.value?.onError(error)
+                            Log.e(TAG, "Unable to get username", error)
+                        }
+                    })
+        )
     }
 
     open class Factory(
@@ -45,5 +70,10 @@ class RestaurantListViewModel(
     override fun onCleared() {
         super.onCleared()
         disposable.clear()
+    }
+
+    companion object {
+        private val TAG = RestaurantListViewModel::class.java.simpleName
+        private val DISTANCE = 1000.toDouble() // in metres
     }
 }
