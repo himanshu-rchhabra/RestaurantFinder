@@ -12,6 +12,7 @@ import com.example.restaurantfinder.R
 import com.example.restaurantfinder.persistence.Restaurant
 import org.w3c.dom.Text
 
+// TODO Milestone2 (03) Add RestaurantListAdapter
 class RestaurantListAdapter(
     private var restaurantList: List<Restaurant> = emptyList(),
     val restaurantListClickListener: RestaurantListClickListener
@@ -41,6 +42,7 @@ class RestaurantListAdapter(
         holder.bindView(restaurantList[position], restaurantListClickListener)
     }
 
+    // TODO Milestone2 (04) Add RestaurantListViewModelHolder
     open class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         private val name: TextView
         private val cuisine: TextView
@@ -53,6 +55,8 @@ class RestaurantListAdapter(
         ) {
             name.text = restaurant.name
             cuisine.text = restaurant.cuisines
+
+            // TODO Milestone2 (02) Load image using glide
             Glide.with(image.context)
                 .load(restaurant.featuredImage)
                 .optionalCenterCrop()

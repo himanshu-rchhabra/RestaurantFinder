@@ -19,10 +19,12 @@ class RestaurantListActivity : AppCompatActivity(),
 
     // TODO Milestone1 (10) User RestaurantListViewModel to fetch data
     private lateinit var viewModelFactory: RestaurantListViewModel.Factory
+    private val viewModel: RestaurantListViewModel by viewModels { viewModelFactory }
+
+    // TODO Milestone2 (06) Setup recycler view
     private lateinit var viewManager: RecyclerView.LayoutManager
     private lateinit var viewAdapter: RestaurantListAdapter
 
-    private val viewModel: RestaurantListViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +74,7 @@ class RestaurantListActivity : AppCompatActivity(),
         restaurants_recycler_view.visibility = View.VISIBLE
 
         viewAdapter.setData(viewState.restaurants!!)
+        // TODO Milestone2 (07) Update recycler view data
     }
 
     override fun onRestaurantClicked(restaurantId: Int) {

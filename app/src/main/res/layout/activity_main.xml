@@ -27,6 +27,7 @@
         android:visibility="gone"
         tools:visibility="visible" />
 
+    <!-- TODO Milestone2 (05) Add recycler view -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/restaurants_recycler_view"
         android:layout_width="match_parent"
