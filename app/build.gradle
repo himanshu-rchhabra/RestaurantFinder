@@ -9,6 +9,9 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
     defaultConfig {
         applicationId "com.example.restaurantfinder"
         minSdkVersion 16
@@ -20,7 +23,9 @@ android {
     }
 
     buildTypes {
-        // TODO Milestone1 (08) Define secret key
+        debug {
+            buildConfigField("String", "API_KEY", "\"" + localProperties['apiKey'] + "\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -51,5 +56,21 @@ dependencies {
     // Stetho
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
-    // TODO Milestone1 (03) Add gradle dependencies for RxJava, Retrofit, LiveData
+    // Arch components
+    def lifecycle_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // Retrofit
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.9.0"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.3"
 }

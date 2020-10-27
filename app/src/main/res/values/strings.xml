@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RestaurantFinder</string>
+
+    <string name="loading_progress_text">Loading...</string>
+    <string name="try_again">Try again</string>
+    <string name="unknown_exception">Sorry, something went wrong.</string>
 </resources>
