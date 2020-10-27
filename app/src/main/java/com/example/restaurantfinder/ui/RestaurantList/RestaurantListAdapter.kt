@@ -4,10 +4,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.restaurantfinder.R
 import com.example.restaurantfinder.persistence.Restaurant
+import org.w3c.dom.Text
 
 class RestaurantListAdapter(private var restaurantList: List<Restaurant> = emptyList()) :
     RecyclerView.Adapter<RestaurantListAdapter.ViewHolder>() {
@@ -36,15 +39,25 @@ class RestaurantListAdapter(private var restaurantList: List<Restaurant> = empty
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val name: TextView
+        private val name: TextView
+        private val cuisine: TextView
+        private val image: ImageView
 
         fun bindView(restaurant: Restaurant) {
             name.text = restaurant.name
+            cuisine.text = restaurant.cuisines
+            Glide.with(image.context)
+                .load(restaurant.featuredImage)
+                .optionalCenterCrop()
+                .into(image)
         }
 
         init {
             v.setOnClickListener { Log.d(TAG, "Element $adapterPosition clicked.") }
             name = v.findViewById(R.id.restaurant_name)
+            cuisine = v.findViewById(R.id.restaurant_cuisine)
+            image = v.findViewById(R.id.restaurant_cover)
+
         }
     }
 
