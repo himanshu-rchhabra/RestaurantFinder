@@ -65,6 +65,7 @@ class RestaurantListActivity : AppCompatActivity(),
         restaurants_recycler_view.visibility = View.GONE
     }
 
+    // TODO Milestone1 (13) Render single restaurant
     private fun renderData(viewState: RestaurantListViewState) {
         loading_text.visibility = View.GONE
         error_loading.visibility = View.GONE
