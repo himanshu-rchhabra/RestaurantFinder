@@ -23,11 +23,9 @@ class RestaurantListViewModel(
     private val disposable = CompositeDisposable()
 
     fun loadData() {
-        // Don't reload data, if it is loading, or already loaded without errors
+        // Don't reload data if already loaded without errors
         liveData.value?.let {
-            if (it.isLoading
-                || (it.error == null && !it.restaurants.isNullOrEmpty())
-            ) {
+            if (it.error == null && !it.restaurants.isNullOrEmpty()) {
                 return
             }
         }
@@ -74,6 +72,5 @@ class RestaurantListViewModel(
 
     companion object {
         private val TAG = RestaurantListViewModel::class.java.simpleName
-        private val DISTANCE = 1000.toDouble() // in metres
     }
 }

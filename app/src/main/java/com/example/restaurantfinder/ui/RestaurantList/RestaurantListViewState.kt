@@ -3,9 +3,9 @@ package com.example.restaurantfinder.ui.RestaurantList
 import com.example.restaurantfinder.persistence.Restaurant
 
 data class RestaurantListViewState(
-    val isLoading: Boolean = false,
-    val error: Throwable? = null,
-    val restaurants: List<Restaurant>? = null
+    var isLoading: Boolean = true,
+    var error: Throwable? = null,
+    var restaurants: List<Restaurant>? = null
 ) {
 
     fun onError(error: Throwable?): RestaurantListViewState {
