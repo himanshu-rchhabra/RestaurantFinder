@@ -31,5 +31,6 @@
         android:visibility="gone"
         tools:visibility="visible"/>
 
+    <!-- TODO Milestone2 (05) Add recycler view -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

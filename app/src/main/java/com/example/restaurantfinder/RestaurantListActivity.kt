@@ -14,6 +14,8 @@ class RestaurantListActivity : AppCompatActivity() {
     private lateinit var viewModelFactory: RestaurantListViewModel.Factory
     private val viewModel: RestaurantListViewModel by viewModels { viewModelFactory }
 
+    // TODO Milestone2 (06) Setup recycler view
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,6 +52,7 @@ class RestaurantListActivity : AppCompatActivity() {
         error_loading.visibility = View.GONE
         restaurant_single_item.visibility = View.VISIBLE
 
+        // TODO Milestone2 (02) Load image using glide
         viewState.restaurants?.let {
             if (it.isNotEmpty()) {
                 restaurant_name.text = it.first().name
@@ -57,5 +60,9 @@ class RestaurantListActivity : AppCompatActivity() {
             }
         }
 
+        // TODO Milestone2 (07) Update recycler view data
     }
+
+    // TODO Milestone2 (03) Add RestaurantListAdapter
+    // TODO Milestone2 (04) Add RestaurantListViewModelHolder
 }
