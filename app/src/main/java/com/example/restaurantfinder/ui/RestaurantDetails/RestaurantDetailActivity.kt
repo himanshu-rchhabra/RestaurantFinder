@@ -15,6 +15,7 @@ import com.example.restaurantfinder.ui.RestaurantList.RestaurantListAdapter
 import com.example.restaurantfinder.ui.RestaurantList.RestaurantListViewModel
 import kotlinx.android.synthetic.main.activity_restaurant_detail.*
 
+// TODO Milestone4 (01) Create RestaurantDetailActivity
 class RestaurantDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModelFactory: RestaurantDetailViewModel.Factory
@@ -33,6 +34,7 @@ class RestaurantDetailActivity : AppCompatActivity() {
         viewModel.loadData(restaurantId)
     }
 
+    // TODO Milestone4 (08) Show restaurant details in the RestaurantDetailActivity
     private fun renderState(viewState: BroadcastDetailViewState) {
         when {
             viewState.isLoading -> showLoadingState()

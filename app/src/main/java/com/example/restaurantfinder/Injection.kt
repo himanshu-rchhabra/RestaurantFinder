@@ -25,6 +25,7 @@ object Injection {
         )
     }
 
+    // TODO Milestone4 (07) Create Injection for restaurant detail viewmodel factory
     fun provideRestaurantDetailViewModelFactory(context: Context): RestaurantDetailViewModel.Factory {
         val database = provideRestaurantDataSource(context)
         return RestaurantDetailViewModel.Factory(

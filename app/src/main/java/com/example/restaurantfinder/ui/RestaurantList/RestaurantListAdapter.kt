@@ -61,7 +61,10 @@ class RestaurantListAdapter(
                 .load(restaurant.featuredImage)
                 .optionalCenterCrop()
                 .into(image)
+
+            // TODO Milestone4 (02) Launch RestaurantDetailActivity when a restaurant is selected from the list
             parentLayout.setOnClickListener { listClickListener.onRestaurantClicked(restaurantId = restaurant.id) }
+            // TODO Milestone4 (03) Pass restaurant id to RestaurantDetailActivity
         }
 
         init {

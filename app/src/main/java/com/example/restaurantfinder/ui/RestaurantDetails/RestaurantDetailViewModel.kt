@@ -5,6 +5,7 @@ import com.example.restaurantfinder.persistence.RestaurantDao
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+// TODO Milestone4 (05) Create RestaurantDetailViewModel
 class RestaurantDetailViewModel(private val database: RestaurantDao) : ViewModel() {
     private val liveData = MutableLiveData(BroadcastDetailViewState())
     fun getLiveData(): LiveData<BroadcastDetailViewState> = liveData

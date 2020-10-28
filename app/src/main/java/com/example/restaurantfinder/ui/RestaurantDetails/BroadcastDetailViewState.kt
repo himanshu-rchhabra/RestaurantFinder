@@ -2,6 +2,7 @@ package com.example.restaurantfinder.ui.RestaurantDetails
 
 import com.example.restaurantfinder.persistence.Restaurant
 
+// TODO Milestone4 (04) Create RestaurantDetailViewState
 data class BroadcastDetailViewState(
     var isLoading: Boolean = true,
     var error: Throwable? = null,
