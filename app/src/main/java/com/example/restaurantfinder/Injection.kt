@@ -20,4 +20,6 @@ object Injection {
             database = database
         )
     }
+
+    // TODO Milestone4 (07) Create Injection for restaurant detail viewmodel factory
 }

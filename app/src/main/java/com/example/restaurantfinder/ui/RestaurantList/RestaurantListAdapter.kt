@@ -44,6 +44,7 @@ class RestaurantListAdapter(
         private val cuisine: TextView
         private val image: ImageView
 
+        // TODO Milestone4 (02) Launch RestaurantDetailActivity when a restaurant is selected from the list
         fun bindView(restaurant: Restaurant) {
             name.text = restaurant.name
             cuisine.text = restaurant.cuisines
@@ -52,6 +53,8 @@ class RestaurantListAdapter(
                 .load(restaurant.featuredImage)
                 .optionalCenterCrop()
                 .into(image)
+
+            // TODO Milestone4 (03) Pass restaurant id to RestaurantDetailActivity
         }
 
         init {

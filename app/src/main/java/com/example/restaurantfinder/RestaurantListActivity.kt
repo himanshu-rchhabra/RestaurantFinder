@@ -66,3 +66,9 @@ class RestaurantListActivity : AppCompatActivity() {
         viewAdapter.setData(viewState.restaurants!!)
     }
 }
+
+// TODO Milestone4 (01) Create RestaurantDetailActivity
+// TODO Milestone4 (04) Create RestaurantDetailViewState
+// TODO Milestone4 (05) Create RestaurantDetailViewModel
+// TODO Milestone4 (06) Create Restaurant Detail View Xml
+// TODO Milestone4 (08) Show restaurant details in the RestaurantDetailActivity
