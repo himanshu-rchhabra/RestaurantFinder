@@ -42,4 +42,4 @@ git checkout BRANCH_NAME
 
 Once you've checked out the branch, you'll have the code in the exact state you need. You'll even have TODOs, which are special comments that tell you all the steps you need to reach the next milestone. You can easily navigate to all the TODOs using Android Studio's TODO tool. To open the TODO tool, click the button at the bottom of the screen that says TODO. This will display a list of all comments with TODO in the project. 
 
-We've numbered the TODO steps so you can do them in order:
+The TODOs are numbered, so that you can take them up in order. 
