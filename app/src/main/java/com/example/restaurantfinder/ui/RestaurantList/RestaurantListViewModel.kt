@@ -7,12 +7,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.restaurantfinder.BuildConfig
 import com.example.restaurantfinder.api.ZomatoApi
+import com.example.restaurantfinder.persistence.RestaurantDao
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-// TODO Milestone3 (06) add database to viewmodel
 class RestaurantListViewModel(
-    private val api: ZomatoApi
+    private val api: ZomatoApi,
+    private val database: RestaurantDao
 ) : ViewModel() {
 
     private val liveData = MutableLiveData(RestaurantListViewState())
@@ -38,6 +39,7 @@ class RestaurantListViewModel(
                 {
                     liveData.value =
                         liveData.value?.onDataLoaded(it.restaurants.map { it.restaurant })
+                    saveData(it)
                 },
                 { error ->
                     run {
@@ -48,14 +50,20 @@ class RestaurantListViewModel(
 
     }
 
-    // TODO Milestone3 (07) save data from response to database
+    private fun saveData(it: ZomatoApi.RestaurantListResponse) {
+        database.saveRestaurants(it.restaurants.map { it.restaurant })
+            .subscribeOn(Schedulers.io())
+            .subscribe()
+    }
 
     open class Factory(
-        private val api: ZomatoApi
+        private val api: ZomatoApi,
+        private val database: RestaurantDao
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             return RestaurantListViewModel(
-                api = this.api
+                api = this.api,
+                database = this.database
             ) as T
         }
     }
